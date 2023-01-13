@@ -14,21 +14,39 @@ class Router
     
     public function __construct() 
     {
-//        echo 'I am router!!!';
+        $arr = require __DIR__ .'/../config/routes.php';
+        foreach ($arr as $key => $value) {
+            $this->add($key, $value);
+        }
+        //var_dump($arr);
+        //var_dump($this->routes);
     }
     
-    public function add($param) 
+    public function add($route, $params) 
     {
-        
+        //echo '<p>'.$route.'</p>';
+       // echo '<br>';
+       // var_dump($params);
+        $route = '#^' . $route . '$#';
+        $this->routes[$route] = $params;
     }
     
-    public function match($param) 
+    public function match() 
     {
-        
+        //var_dump($_SERVER);
+        $url = trim($_SERVER['REQUEST_URI'], '/');
+        //var_dump($url);
+        foreach ($this->routes as $route => $params) {
+            if (preg_match($route, $url, $matches)) {
+                var_dump($params);
+                //var_dump($matches);
+            }
+        }
     }
     
-    public function run($param) 
+    public function run() 
     {
-        echo 'start';
+        $this->match();
+        //echo 'start';
     }
 }
