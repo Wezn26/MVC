@@ -38,15 +38,33 @@ class Router
         //var_dump($url);
         foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
-                var_dump($params);
+                $this->params = $params;
+                return true;
+                //var_dump($params);
                 //var_dump($matches);
             }
         }
+        return false;
     }
     
     public function run() 
     {
-        $this->match();
+        if ($this->match()) {
+            $controller = '\App\Controllers\\' . 
+                    ucfirst($this->params['controller']) . 'Controller.php';
+            if (class_exists($controller)) {
+                echo 'OK!!!';
+            } else {
+                echo 'Not found: ' . $controller;
+            }
+            //echo $controller;
+            //echo '<p>Controller: <b>' . $this->params['controller'] . '</b></p>';
+            //echo '<p>Action: <b>' . $this->params['action'] . '</b></p>';
+            //var_dump($this->params);die();
+            //echo 'Route Found!!!';
+        } else {
+            echo 'Route Not Found!!!';
+        }
         //echo 'start';
     }
 }
