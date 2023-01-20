@@ -50,12 +50,18 @@ class Router
     public function run() 
     {
         if ($this->match()) {
-            $controller = '\App\Controllers\\' . 
-                    ucfirst($this->params['controller']) . 'Controller.php';
-            if (class_exists($controller)) {
-                echo 'OK!!!';
+            $path = '\App\Controllers\\' . 
+                    ucfirst($this->params['controller']) . 'Controller';
+            if (class_exists($path)) {
+                $action = $this->params['action'] . 'Action';
+                if (method_exists($path, $action)) {
+                    $controller = new $path;
+                    $controller->$action();
+                } else {
+                    echo 'Not Found Action: ' . $action;
+                }
             } else {
-                echo 'Not found: ' . $controller;
+                echo 'Not found Controller: ' . $path;
             }
             //echo $controller;
             //echo '<p>Controller: <b>' . $this->params['controller'] . '</b></p>';
