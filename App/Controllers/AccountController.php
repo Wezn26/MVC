@@ -7,7 +7,7 @@ namespace App\Controllers;
  *
  * @author leonid
  */
-class AccountController 
+class AccountController extends Controller 
 {
     public function loginAction() 
     {
