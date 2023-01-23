@@ -9,13 +9,19 @@ namespace App\Controllers;
  */
 class AccountController extends Controller 
 {
+    
+    public function before() 
+    {
+        $this->view->layout = 'custom';
+    }
+    
     public function loginAction() 
     {
-        echo 'Enter Page!!!';
+         $this->view->render('Enter Page!!!');
     }
     
     public function registerAction() 
-    {
-        echo 'Registration Page!!!';
+    {         
+         $this->view->render('Registration Page!!!');
     }
 }

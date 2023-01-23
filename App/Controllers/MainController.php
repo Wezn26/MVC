@@ -11,7 +11,8 @@ class MainController extends Controller
 {
     public function indexAction() 
     {
-        echo 'Main Page!!!';
+        $this->view->render('Main Page!!!');
+        //echo 'Main Page!!!';
     }   
     
 }
