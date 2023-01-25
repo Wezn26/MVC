@@ -22,6 +22,7 @@ class View
     
     public function render($title, $vars = []) 
     {
+        //extract($vars);
         ob_start(); 
         $file =  'App/View/' . $this->path . '.php';
         if (file_exists($file)) {
