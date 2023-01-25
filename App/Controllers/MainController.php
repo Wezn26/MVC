@@ -15,7 +15,7 @@ class MainController extends Controller
 //            'name' => 'Vasya',
 //            'age'  => '18'
 //        ];
-        $this->view->render('Main Page!!!', $vars);
+        $this->view->render('Main Page!!!');
         //echo 'Main Page!!!';
     }   
     

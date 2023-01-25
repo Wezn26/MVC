@@ -58,10 +58,10 @@ class Router
                     $controller = new $path($this->params);
                     $controller->$action();
                 } else {
-                    echo 'Not Found Action: ' . $action;
+                    View::errorcode(404);
                 }
             } else {
-                echo 'Not found Controller: ' . $path;
+                View::errorcode(404);
             }
             //echo $controller;
             //echo '<p>Controller: <b>' . $this->params['controller'] . '</b></p>';
@@ -69,7 +69,7 @@ class Router
             //var_dump($this->params);die();
             //echo 'Route Found!!!';
         } else {
-            echo 'Route Not Found!!!';
+            View::errorcode(403);
         }
         //echo 'start';
     }

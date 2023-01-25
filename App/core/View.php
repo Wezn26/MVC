@@ -22,17 +22,32 @@ class View
     
     public function render($title, $vars = []) 
     {
-        //extract($vars);
-        ob_start(); 
+        extract($vars);         
         $file =  'App/View/' . $this->path . '.php';
         if (file_exists($file)) {
+            ob_start();
             require $file;
             $content = ob_get_clean();
             require 'App/View/layouts/' . $this->layout . '.php';
         } else {
             echo 'Not Found View: ' . $this->path;
-        }
-               
+        }               
         
+    }
+    
+    public function redirect($url) 
+    {
+        header('Location: ' . $url);
+        exit();
+    }
+    
+    public static function errorcode($code) 
+    {
+        http_response_code($code);
+         $file = require 'App/View/errors/' . $code . '.php';
+         if (file_exists($file)) {
+             require $file;
+         }
+         exit();
     }
 }
