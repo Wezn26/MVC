@@ -1,4 +1,4 @@
 <?php
-define('DSN', 'sqlite:/home/leonid/Документы/PHP/NETBEANS/MVC/App/lib/mvc.sqlite');
+define('DSN', 'sqlite:'. __DIR__ . '/mvc.db');
 
 

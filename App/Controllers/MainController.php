@@ -15,6 +15,7 @@ class MainController extends Controller
 //            'name' => 'Vasya',
 //            'age'  => '18'
 //        ];
+        $db = new \App\lib\Db();
         $this->view->render('Main Page!!!');
         //echo 'Main Page!!!';
     }   
