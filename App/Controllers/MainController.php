@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\Main;
+
 /**
  * Description of MainController
  *
@@ -15,7 +17,12 @@ class MainController extends Controller
 //            'name' => 'Vasya',
 //            'age'  => '18'
 //        ];
-        $db = new \App\lib\Db();
+        
+        
+        $data = Main::getColumn('name', 1);
+        $data2 = Main::getAll();
+        var_dump($data);
+        var_dump($data2);
         $this->view->render('Main Page!!!');
         //echo 'Main Page!!!';
     }   
