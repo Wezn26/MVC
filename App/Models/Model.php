@@ -23,8 +23,9 @@ abstract class Model
     public static function getColumn(string $column, int $id) : string
     {
         $db = new \App\lib\Db();
-        $sql = 'SELECT ' . $column . ' FROM users WHERE id= ' . $id;
-        $data = $db->column($sql);
+        $sql = 'SELECT ' . $column . ' FROM users WHERE id=:id';
+        $params = ['id' => $id];
+        $data = $db->column($sql, $params);
         return $data;
     }
 }

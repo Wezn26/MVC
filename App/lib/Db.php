@@ -17,21 +17,28 @@ class Db
         $this->dbh = new \PDO(DSN);       
     }
     
-    public function query($sql) 
+    public function query($sql, $params = []) 
     {
-        $query = $this->dbh->query($sql);
-        return $query;
+        $stmt = $this->dbh->prepare($sql);
+        if (!empty($params)) {
+            foreach ($params as $key => $value) {
+                $stmt->bindValue(':' . $key, $value);
+                //echo '<p>'. $key . ' => ' . $value . '</p>';
+            }
+        }
+        $stmt->execute();
+        return $stmt;
     }
     
-    public function row($sql) 
+    public function row($sql, $params = []) 
     {
-        $result = $this->query($sql);
+        $result = $this->query($sql, $params);
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
     
-    public function column($sql) 
+    public function column($sql, $params = []) 
     {
-        $result = $this->query($sql);
+        $result = $this->query($sql, $params);
         return $result->fetchColumn();
     }
 }
