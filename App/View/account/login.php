@@ -1,9 +1,9 @@
 <h3>Enter</h3>
-<form action="action">
+<form action="/account/login" method="POST">
     <p>login</p>
-    <p><input type="text"></p>
+    <p><input type="text" name="login"></p>
     <p>password</p>
-    <p><input type="text"></p>
-    <p><button>Enter</button></p>
+    <p><input type="text" name="password"></p>
+    <p><button type="submit">Enter</button></p>
 </form>
 

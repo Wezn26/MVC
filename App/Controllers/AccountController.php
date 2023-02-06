@@ -18,6 +18,11 @@ class AccountController extends Controller
     public function loginAction() 
     {
          //$this->view->redirect('https://google.com');
+        
+         if (!empty($_POST)) {
+             //$this->view->location('/account/register');
+             $this->view->message('error', 'text error');
+         }
          $this->view->render('Enter Page!!!');
     }
     
