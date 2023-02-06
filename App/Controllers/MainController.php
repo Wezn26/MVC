@@ -19,11 +19,17 @@ class MainController extends Controller
 //        ];
         
         
-        $data = Main::getColumn('name', 1);
-        $data2 = Main::getAll();
-        var_dump($data);
-        var_dump($data2);
-        $this->view->render('Main Page!!!');
+        //$data = Main::getColumn('name', 1);
+        //$data2 = Main::getAll();
+        //var_dump($data);
+        //var_dump($data2);
+        $main = new Main();
+        $news = $main->getNews();
+        $vars = [
+            'news' => $news
+        ];
+       
+        $this->view->render('Main Page!!!', $vars);
         //echo 'Main Page!!!';
     }   
     

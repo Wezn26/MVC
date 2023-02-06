@@ -11,6 +11,7 @@ namespace App\Models;
 abstract class Model 
 {
    // protected const TABLE = '';
+   
     
     public static function getAll() : array
     {
